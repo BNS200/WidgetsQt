@@ -2,27 +2,22 @@
 
 Win::Win(QWidget *parent) : QWidget(parent)
 {
-    codec = QTextCodec::codecForName("UTF-8");
-    if (!codec) {
-        codec = QTextCodec::codecForName("Windows-1251");
-    }
-
-    setWindowTitle(codec->toUnicode("Возведение в квадрат"));
+    setWindowTitle(QString::fromUtf8("Возведение в квадрат"));
 
     frame = new QFrame(this);
     frame->setFrameShadow(QFrame::Raised);
     frame->setFrameShape(QFrame::Panel);
 
-    inputLabel = new QLabel(codec->toUnicode("Введите число:"));
+    inputLabel = new QLabel(QString::fromUtf8("Введите число:"));
     inputEdit = new QLineEdit("", this);
     StrValidator *v = new StrValidator(inputEdit);
     inputEdit->setValidator(v);
 
-    outputLabel = new QLabel(codec->toUnicode("Результат:"), this);
+    outputLabel = new QLabel(QString::fromUtf8("Результат:"), this);
     outputEdit = new QLineEdit("", this);
 
-    nextButton = new QPushButton(codec->toUnicode("Следующее"), this);
-    exitButton = new QPushButton(codec->toUnicode("Выход"), this);
+    nextButton = new QPushButton(QString::fromUtf8("Следующее"), this);
+    exitButton = new QPushButton(QString::fromUtf8("Выход"), this);
 
     QVBoxLayout *vLayout1 = new QVBoxLayout(frame);
     vLayout1->addWidget(inputLabel);
@@ -82,10 +77,7 @@ void Win::calc()
     {
         if (!str.isEmpty())
         {
-            QMessageBox msgBox(QMessageBox::Information,
-                               codec->toUnicode("Возведение в квадрат."),
-                               codec->toUnicode("Введено неверное значение."),
-                               QMessageBox::Ok);
+            QMessageBox msgBox(QMessageBox::Information, QString::fromUtf8("Возведение в квадрат."), QString::fromUtf8("Введено неверное значение."), QMessageBox::Ok);
             msgBox.exec();
         }
     }

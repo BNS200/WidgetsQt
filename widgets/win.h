@@ -28,7 +28,6 @@ class Win : public QWidget
     Q_OBJECT
 
 protected:
-    QTextCodec *codec;
     QFrame *frame;
     QLabel *inputLabel;
     QLineEdit *inputEdit;
